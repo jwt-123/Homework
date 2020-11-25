@@ -1,5 +1,3 @@
-//一开始用英语。。居然还出了些错。。。还是改成中文debug了23333
-
 #include <iostream>
 #include<malloc.h>
 typedef int Datatype;
@@ -30,7 +28,7 @@ void CreateListH(Linknode* head, int n)//头插法
         s->next = head->next;
         head->next = s;
     }
-    cout << "成功建立" << endl;
+    cout << "succeed build Linklist" << endl;
 }
 
 void CreateListL(Linknode* head, int n)
@@ -117,11 +115,11 @@ void Inslist(linknode* head, int i, Datatype x)
         s->data = x;
         s->next = p->next;
         p->next = s;
-        cout << "成功插入" << endl;
+        cout << "succeed to insert" << endl;
     }
     else
     {
-        cout << "未成功插入" << endl;
+        cout << "fail to insert" << endl;
     }
 }
 
@@ -145,9 +143,10 @@ void delllist(linknode* head, int i)
     }
     else
     {
-        cout << "失败 ,请再次尝试" << endl;
+        cout << "fail to dell,plz try again" << endl;
     }
 }
+
 
 void displist(linknode* head)
 {
@@ -155,23 +154,22 @@ void displist(linknode* head)
     p = head->next;
     while (p != NULL)
     {
-        cout << p->data<<endl;
+        cout << p->data;
         p = p->next;
     }
 }
 
 void menuline()
 {
-    cout << "单链表" << endl;
+    cout << "LinearMeterSubsystem" << endl;
     cout << "===================" << endl;
-    cout << "1,建立" << endl;
-    cout << "2,插入" << endl;
-    cout << "3,位置查找" << endl;
-    cout << "4,值查找" << endl;
-    cout << "5，计算长度" << endl;
-    cout << "6, 返回" << endl;
-    cout << "7,查看" << endl;
-    cout << "请输入" << endl;
+    cout << "1,set up" << endl;
+    cout << "2,insert" << endl;
+    cout << "3,search in position" << endl;
+    cout << "4,search in value" << endl;
+    cout << "5，cal length" << endl;
+    cout << "6, return" << endl;
+    cout << "plz input the number" << endl;
 }
 
 
@@ -190,15 +188,16 @@ int main()
         {
         case '1':
             head = InitList();
-            cout << "输入长度\n";
+            cout << "plz input the length\n";
             cin >> n;
             CreateListL(head, n);
-            cout << "成功建立\n";
+            cout << "succeed bulid\n";
             displist(head);
             break;
         case '2':
             cout << "plz input the number location" << endl;
             cin >> i;
+            getchar();
             cout << "plz input the value" << endl;
             cin >> x;
             Inslist(head, i, x);
@@ -215,7 +214,6 @@ int main()
             cout << "plz input the value you wanna search";
             cin >> i;
             searchlist(head, i);
-            displist(head);
             break;
         case '5':
             cout << "plz input the integer you search";
@@ -226,13 +224,26 @@ int main()
             cout << "the length is";
             cout << lengthlist(head);
             break;
+        case'7':
+            displist(head);
         case '0':
             ch1 = 'n';
             break;
-        case'7':
-            displist(head);
         default:
+            cout << "error" << endl;
             break;
+        }
+        if (ch2 == '0')
+        {
+            cout << "\nerror " << endl;
+            a = getchar();
+            if (a != '\xA')
+            {
+                getchar();
+                ch1 = 'n';
+
+            }
+
         }
     }
 }
